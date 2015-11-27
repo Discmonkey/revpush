@@ -10,15 +10,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #handle the right save
+      #flash upon sucess only display once redirect_to automatically figures out to route to the user url
+      flash[:success] = "Welcome to the sample app!"
+      redirect_to @user
     else
       render 'new'
     end
   end
 
   private
-
     def user_params
+      # do not pass superflous parameters
       params.require(:user).permit(:name,:email,:password,:password_confirmation)
     end
 end
