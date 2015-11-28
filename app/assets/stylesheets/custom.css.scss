@@ -86,6 +86,7 @@ footer {
       margin-left: 15px;
     }
   }
+}
 
   @mixin box_sizing {
     -moz-box-sizing:    border-box;
@@ -100,6 +101,7 @@ footer {
     margin-top: 45px;
     @include box_sizing;
   }
+
 
   /* user aside */
 
@@ -167,6 +169,4 @@ footer {
     }
   }
 
-
-}
 
