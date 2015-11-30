@@ -68,4 +68,9 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "bbaacc"
     assert_not @user.valid?
   end
+
+  test "autheticated? with empty password" do
+    assert_not @user.authenticated?('')
+  end
+
 end

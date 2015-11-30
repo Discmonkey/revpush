@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       #flash upon success only display once redirect_to automatically figures out to route to the user url
+      log_in(@user)
       flash[:success] = "Welcome to the sample app!"
       redirect_to @user
     else
