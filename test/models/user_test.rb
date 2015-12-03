@@ -70,7 +70,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "autheticated? with empty password" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember,'')
   end
 
 end
