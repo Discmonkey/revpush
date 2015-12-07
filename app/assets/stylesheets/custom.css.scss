@@ -3,7 +3,7 @@
 
 
 body {
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
 section {
@@ -47,20 +47,39 @@ p {
   line-height: 1.7em;
 }
 
-#logo {
+.image_container {
+  height: 80px;
+  width: 80px;
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: $gray-light;
-    text-decoration: none;
+  block: inline;
+
+  @-webkit-keyframes rotate {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(-360deg);
+    }
   }
+  img {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    &:hover {
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    }
+
+  }
+
+
+
 }
+
 
 footer {
   margin-top: 45px;
