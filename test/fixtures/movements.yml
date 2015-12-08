@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+save_dolphins:
+  name: MyText
+  desc: MyText
+  zoom: 1.5
+  center_lat: 1.5
+  center_long: 1.5
+  movement_color: MyString
+  movement_strength: 1.5
+  user_id:
+  created_at: <%= 10.minutes.ago %>
+
+save_whales:
+  name: MyText
+  desc: MyText
+  zoom: 1.5
+  center_lat: 1.5
+  center_long: 1.5
+  movement_color: MyString
+  movement_strength: 1.5
+  user_id:
+  created_at: <%= Time.zone.now %>
+
+

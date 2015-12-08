@@ -73,9 +73,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember,'')
   end
 
-  test "associated microposts should be destroyed" do
+  test "associated movements should be destroyed" do
     @user.save
-    @user.microposts.create!(content: "Lorem ipsum")
+    @user.movements.create!(name: "Lorem ipsum", desc: "save dolphins", zoom: .4, center_lat: 190, center_long: 194,
+      movement_color: "#ffffff", movement_strength: .5)
     assert_difference 'Micropost.count', -1 do
       @user.destroy
     end

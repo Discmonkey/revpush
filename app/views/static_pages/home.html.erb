@@ -1,29 +1,57 @@
-<% if logged_in? %>
-    <div class="row">
-      <aside class="col-md-4">
-        <section class="user_info">
-          <%= render 'shared/user_info' %>
-        </section>
-        <section class="micropost_form">
-          <%= render 'shared/micropost_form' %>
-        </section>
-      </aside>
-      <div class="col-md-8">
-        <h3>Micropost Feed</h3>
-        <%= render 'shared/feed' %>
-      </div>
-    </div>
-<% else %>
+
     <div class="center jumbotron">
-      <h1>Welcome to the Sample App</h1>
+      <h2>Welcome to Revolutions</h2>
+      <h3>Start your movement <%= link_to "here", signup_path %>.</h3>
+      <br> <br>
+      <div class="site_description">
+      <p>
+        What does it take to motivate real, lasting social change? I believe that in its simplest form it takes people working
+        together towards a specific and attainable goal. I created this site so that if you have that idea, big or small,
+        you can share it with others.
+      </p>
 
-      <h2>
-        This is the home page for the
-        <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-        sample application.
-      </h2>
+      <p>
+        Below, are all the movements started by the users of this site represented visually. When you join, every member of the
+        site will be able to sed the movements you start. They will be able to join and interact with you. Together it is
+        our hope that we can organize and find people inspired enough to effect real, meaningful change.
+      </p>
 
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+      <p>
+        To start, just select an area and give a description. Every user of the site will be able to see your movement on
+        the map below. They will be able to join and discuss your idea. You will have access to other like minded individuals,
+        and together (or so is my hope) we can begin to change the world one small neighborhood or large city at a time.
+      </p>
+      </div>
+
+
+      </div>
+
+      <div  class='row center-block' style='width: 800px; border-round: 10px'>
+        <div id="map" style='width: 800px; height: 400px;'></div>
+      </div>
+
+    <script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script>
+    <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+    <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+    <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+    {
+    "lat": 0,
+    "lng": 0,
+    "picture": {
+    "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+    "width":  32,
+    "height": 32
+    },
+    "infowindow": "hello!"
+    }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    });
+    </script>
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
     </div>
-
-<% end %>

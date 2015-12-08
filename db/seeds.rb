@@ -20,6 +20,15 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  name = Faker::Lorem.sentence(1)
+  desc =Faker::Lorem.sentence(6)
+  zoom = rand(10)/10.0
+  center_lat = rand(20000)/200.0
+  center_long =rand(20000)/200.0
+  movement_color = "#ffffff"
+  movement_strength = rand(100)/100.0
+
+  users.each { |user| user.movements.create!(name: name, desc: desc, zoom: zoom, center_lat: center_lat,
+                                              center_long: center_long, movement_strength: movement_strength,
+                                              movement_color: movement_color)}
 end
