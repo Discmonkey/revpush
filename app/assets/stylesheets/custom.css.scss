@@ -89,6 +89,22 @@ p {
   padding: 20px;
 }
 
+.map_display_outer {
+  width: 800px;
+  margin: 0 !important;
+
+}
+
+.map_display_inner {
+  width: 800px;
+  height: 400px;
+  margin: 0;
+}
+
+#geolocation {
+  margin: 0;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
