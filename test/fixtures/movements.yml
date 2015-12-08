@@ -11,7 +11,7 @@ save_dolphins:
   user_id:
   created_at: <%= 10.minutes.ago %>
 
-save_whales:
+most_recent:
   name: MyText
   desc: MyText
   zoom: 1.5
