@@ -1,22 +1,16 @@
 <li id="movement-<%= movement.id %>">
 
-  <span class="user"><%= link_to movement.user.name,movement.user %> </span>
+  <div class="row panel">
+    <div class='col-md-3 text-center'>
+    <%=link_to movement.name, movement%>
+    </div>
+    <div class='col-md-6 text-center'>
+      <%= movement.desc %>
+    </div>
 
-  <span class="content">
-    ({
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: <%= movement.movement_color %>,
-    fillOpacity: <%= movement.movement_strength %>,
-    map: map,
-    center: { lat: <%=movement.center_lat %>, lng: <%=movement.center_long %> },
-    radius: placeholder
-    });
-  </span>
-
-  <span class="timestamp">
-    Started <%= time_ago_in_words(movement.created_at) %> ago.
-  </span>
+    <div class='col-md-3 text-center'>
+      Started <%= time_ago_in_words(movement.created_at) %> ago.
+    </div>
+  </div>
 
 </li>

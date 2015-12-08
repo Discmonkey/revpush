@@ -19,4 +19,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Password reset"
   end
+
+  def mail_to_max(user)
+    @max = user
+    mail to: "frismo98@gmail.com", subject: "Contact from Revolutions"
+  end
 end
