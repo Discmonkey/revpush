@@ -23,8 +23,11 @@ class MovementsController < ApplicationController
       redirect_to current_user
     else
       @movement = Movement.new
-      @movement.center_lat = location[0].latitude
-      @movement.center_long = location[0].longitude
+      lat=location[0].latitude
+      long=location[0].longitude
+      @circles_json = "[{\"lng\": #{long}, \"lat\": #{lat}, \"radius\": 1000000},\"editable\":true]"
+      @movement.center_lat = lat
+      @movement.center_long = long
     end
   end
 
