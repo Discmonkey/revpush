@@ -90,8 +90,6 @@ p {
 
 .map_display_outer {
   width: 800px;
-  margin: 0 !important;
-
 }
 
 .map_display_inner {
@@ -160,9 +158,13 @@ aside {
     margin-top: 20px;
   }
 
+  .movements {
+    list-style-type:none;
+  }
+
   #user_movements {
     height: 200px;
-    overfloy-y: scroll;
+    overflow-y: scroll;
   }
   section {
     padding: 10px 0;
@@ -255,8 +257,6 @@ margin-left: 0;
     border-bottom: 1px solid $gray-lighter;
   }
 }
-
-
 
 aside {
   textarea {

@@ -4,8 +4,12 @@ class MovementTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:max)
-    @movement = @user.movements.build(name:"first",desc:"first movement",zoom: 4, center_lat: 192.123, center_long: 123.12,
+    @movement = @user.movements.build(name:"first",desc:"first movement",zoom: 4, Address: "Oakland, NJ",
                              movement_color: "#ffffff",movement_strength: 0.5)
+  end
+
+  test "create with Address" do
+    @movement = @user.movements.build()
   end
 
   test "should be valid" do
@@ -27,13 +31,8 @@ class MovementTest < ActiveSupport::TestCase
     assert_not @movement.valid?
   end
 
-  test "center_lat should be present" do
-    @movement.center_lat= nil
-    assert_not @movement.valid?
-  end
-
-  test "center_long should be present" do
-    @movement.center_long= nil
+  test "Address should be present" do
+    @movement.Address = nil
     assert_not @movement.valid?
   end
 
@@ -49,5 +48,11 @@ class MovementTest < ActiveSupport::TestCase
 
   test "order should be most recent first" do
     assert_equal movements(:most_recent), Movement.first
+  end
+
+  test "Geocoder should fill in latitude and longitude" do
+    @movement.save
+    assert @movement.center_lat != nil
+    assert @movement.center_long != nil
   end
 end

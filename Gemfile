@@ -16,6 +16,7 @@ gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.36.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 group :development, :test do

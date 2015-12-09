@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207192428) do
+ActiveRecord::Schema.define(version: 20151208195414) do
 
   create_table "movements", force: :cascade do |t|
     t.text     "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151207192428) do
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "Address"
   end
 
   add_index "movements", ["user_id", "created_at"], name: "index_movements_on_user_id_and_created_at"

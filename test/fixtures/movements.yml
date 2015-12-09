@@ -4,8 +4,7 @@ save_dolphins:
   name: MyText
   desc: MyText
   zoom: 1.5
-  center_lat: 1.5
-  center_long: 1.5
+  Address: "Newark, NJ"
   movement_color: MyString
   movement_strength: 1.5
   user_id:
@@ -15,8 +14,7 @@ most_recent:
   name: MyText
   desc: MyText
   zoom: 1.5
-  center_lat: 1.5
-  center_long: 1.5
+  Address: "Newark, NJ"
   movement_color: MyString
   movement_strength: 1.5
   user_id:
