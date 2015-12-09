@@ -4,10 +4,14 @@ class MovementsController < ApplicationController
   def create
     @movement = current_user.movements.build(movement_params)
     if @movement.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Movement created!"
       redirect_to current_user
     else
-      render 'static_pages/home'
+      flash[:warning] = "Please make sure both the movement name and description are filled in"
+      @movement = Movement.new
+      @movement.center_lat = params[:center_lat]
+      @movement.center_long = params[:center_long]
+      render 'movements/new'
     end
   end
 
@@ -29,4 +33,9 @@ class MovementsController < ApplicationController
 
   def destroy
   end
+
+  private
+    def movement_params
+      params.permit(:name, :desc, :zoom, :center_lat, :center_long, :movement_color, :movement_strength, :Address)
+    end
 end

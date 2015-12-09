@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
     def user_params
       # do not pass superflous parameters
-      params.require(:user).permit(:name,:email,:password,:password_confirmation)
+      param.require(:user).permit(:name,:email,:password,:password_confirmation)
     end
 
     def correct_user
