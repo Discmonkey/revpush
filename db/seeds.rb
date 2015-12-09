@@ -25,18 +25,17 @@ User.create!(name:  "Troy",
                activated_at: Time.zone.now)
 end
 
-locations = ["New York, NY", "Dallas, Texas", "255 HollyRidge Roswell, GA", "27 Lakeview Terrace Oakland, NJ,", "4900 Central Drive Stone Moutain, GA",
-                  "Gwinnet County, GA"]
 
 users = User.order(:created_at).take(6)
 3.times do
   name = Faker::Lorem.sentence(1)
   desc =Faker::Lorem.sentence(6)
-  zoom = rand(10)/10.0
-  address = locations.sample
-  movement_color = "#ffffff"
+  zoom = 60000
+  center_lat = 0-rand(90) + rand(90)
+  center_long = 0-rand(180) + rand(180)
   movement_strength = rand(100)/100.0
 
-  users.each { |user| user.movements.create!(name: name, desc: desc, zoom: zoom, Address: address, movement_strength: movement_strength,
-                                              movement_color: movement_color)}
+  users.each { |user| user.movements.create!(name: name, desc: desc, zoom: zoom,
+                                             movement_strength: movement_strength,
+                                              center_lat: center_lat, center_long: center_long)}
 end

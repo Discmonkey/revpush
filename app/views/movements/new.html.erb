@@ -55,12 +55,10 @@
       radius: 5000,
       editable: true
     });
-    console.log(document.getElementById("movement_center_lat").value);
+
     google.maps.event.addListener(circle, 'radius_changed', function () {
       document.getElementById('movement_zoom').value = String(circle.getRadius());
-      //write better function for movement opacity
       var new_opac = 750/circle.getRadius();
-
       if (new_opac > .9) {
         new_opac = .9;
       }
