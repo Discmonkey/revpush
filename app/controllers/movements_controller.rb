@@ -5,7 +5,7 @@ class MovementsController < ApplicationController
     @movement = current_user.movements.build(movement_params)
     if @movement.save
       flash[:success] = "Movement created!"
-      redirect_to current_user
+      redirect_to @movement
     else
       flash[:warning] = "Please make sure both the movement name and description are filled in"
       @movement = Movement.new
@@ -25,9 +25,11 @@ class MovementsController < ApplicationController
       @movement = Movement.new
       lat=location[0].latitude
       long=location[0].longitude
-      @circles_json = "[{\"lng\": #{long}, \"lat\": #{lat}, \"radius\": 1000000},\"editable\":true]"
       @movement.center_lat = lat
       @movement.center_long = long
+      @movement.zoom = 5000
+      @movement.movement_strength = 0.15
+
     end
   end
 
@@ -39,6 +41,6 @@ class MovementsController < ApplicationController
 
   private
     def movement_params
-      params.permit(:name, :desc, :zoom, :center_lat, :center_long, :movement_color, :movement_strength, :Address)
+      params.require(:movement).permit(:name, :desc, :zoom, :center_lat, :center_long, :movement_color, :movement_strength, :Address)
     end
 end

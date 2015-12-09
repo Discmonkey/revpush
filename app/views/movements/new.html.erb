@@ -7,7 +7,6 @@
 
     <%= f.label :desc %>
     <%= f.text_area :desc, class: 'form-control' %>
-
     <%= f.hidden_field :zoom, class: 'form-control' %>
     <%= f.hidden_field :movement_color, class: 'form-control' %>
     <%= f.hidden_field :movement_strength, class: 'form-control' %>
@@ -45,27 +44,37 @@
 
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
-      var circle = new google.maps.Circle({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#6ecdff',
-        fillOpacity: 0.5,
-        map: map,
-        center: {lat: <%= @movement.center_lat %>, lng: <%= @movement.center_long %>},
-        radius: 5000,
-        editable: true
-      });
+    var circle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#6ecdff',
+      fillOpacity: 0.5,
+      map: map,
+      center: {lat: <%= @movement.center_lat %>, lng: <%= @movement.center_long %>},
+      radius: 5000,
+      editable: true
+    });
+    console.log(document.getElementById("movement_center_lat").value);
+    google.maps.event.addListener(circle, 'radius_changed', function () {
+      document.getElementById('movement_zoom').value = String(circle.getRadius());
+      //write better function for movement opacity
+      var new_opac = 750/circle.getRadius();
 
-      google.maps.event.addListener(circle, 'radius_changed', function() {
-      console.log(circle.getRadius());
-      });
+      if (new_opac > .9) {
+        new_opac = .9;
+      }
+      document.getElementById('movement_movement_strength').value = String(new_opac);
 
-      google.maps.event.addListener(circle, 'center_changed', function() {
-        console.log(circle.getRadius());
-      });
+    });
 
+    google.maps.event.addListener(circle, 'center_changed', function () {
+      console.log(circle.getCenter()['G'])
+      document.getElementById('movement_center_lat').value = String(circle.getCenter()['G']);
+      document.getElementById('movement_center_long').value = String(circle.getCenter()['K']);
+
+    });
   }
-  initMap()
+      initMap()
 </script>
 
