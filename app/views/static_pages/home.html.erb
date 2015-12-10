@@ -47,15 +47,6 @@
             disableDefaultUI: true
           });
 
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-              var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-              map.setCenter(pos);
-            })
-          }
 
           var bounds = new google.maps.LatLngBounds();
 
