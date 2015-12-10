@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
 
   has_many :movements, dependent: :destroy
-
+  has_many :active_relationships, class_name:  "Relationship",
+           foreign_key: "member_id",
+           dependent: :destroy
+  has_many :memberships, through: :active_relationships, source: :movement
   attr_accessor :remember_token, :activation_token, :reset_token
+
   before_save :downcase_email
   before_create :create_activation_digest
 
@@ -61,6 +65,20 @@ class User < ActiveRecord::Base
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def join(movement)
+    active_relationships.create(movement_id: movement.id)
+  end
+
+
+  def leave(movement)
+    active_relationships.find_by(movement_id: movement.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def member?(movement)
+    memberships.include?(movement)
   end
 
   private

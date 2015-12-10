@@ -27,16 +27,6 @@ class MovementTest < ActiveSupport::TestCase
     assert_not @movement.valid?
   end
 
-  test "Address should be present" do
-    @movement.Address = nil
-    assert_not @movement.valid?
-  end
-
-  test "movement_color should be present" do
-    @movement.movement_color= nil
-    assert_not @movement.valid?
-  end
-
   test "movement_strength should be present" do
     @movement.movement_strength= nil
     assert_not @movement.valid?

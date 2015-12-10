@@ -75,11 +75,24 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated movements should be destroyed" do
     @user.save
-    @user.movements.create!(name: "Lorem ipsum", desc: "save dolphins", zoom: 0.4, Address: "Newark, NJ",
-      movement_color: "#ffffff", movement_strength: 0.5)
-    assert_difference 'Movement.count', -1 do
-      @user.destroy
-    end
+    @user.movements.create!(name: "Lorem ipsum", desc: "save dolphins", zoom: 1000, center_lat: 34, center_long: 40, movement_color: "#ffffff", movement_strength: 0.5)
+        assert_difference 'Movement.count', -1 do
+          @user.destroy
+        end
   end
+
+  test "movement_can_be_followed" do
+    user1 = users(:max)
+    user2 = users(:archer)
+    movement1 = movements(:save_dolphins)
+    movement2 = movements(:most_recent)
+    user1.join(movement1)
+    user2.join(movement2)
+    assert user1.member?(movement1)
+    assert user2.member?(movement2)
+
+  end
+
+
 
 end

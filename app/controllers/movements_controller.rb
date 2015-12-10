@@ -7,7 +7,7 @@ class MovementsController < ApplicationController
       flash[:success] = "Movement created!"
       redirect_to @movement
     else
-      flash.once[:warning] = "Please make sure both the movement name and description are filled in"
+      flash.now[:warning] = "Please make sure both the movement name and description are filled in"
       @movement = Movement.new
       @movement.center_lat = params[:center_lat]
       @movement.center_long = params[:center_long]
