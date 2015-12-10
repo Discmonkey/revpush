@@ -43,7 +43,8 @@
           var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 7,
             center: {lat: 39, lng: -98},
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
           });
 
           if (navigator.geolocation) {

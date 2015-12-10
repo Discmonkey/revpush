@@ -90,7 +90,11 @@ class UserTest < ActiveSupport::TestCase
     user2.join(movement2)
     assert user1.member?(movement1)
     assert user2.member?(movement2)
-
+    assert_not user1.member?(movement2)
+    user1.join(movement2)
+    assert user1.member?(movement2)
+    user1.destroy
+    assert_not user1.member?(movement2)
   end
 
 

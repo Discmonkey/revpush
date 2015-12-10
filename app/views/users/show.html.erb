@@ -72,7 +72,7 @@
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
 
-    <% Movement.all.each do |movement| %>
+    <% @user.movements.each do |movement| %>
     var c_<%=movement.id%> = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,

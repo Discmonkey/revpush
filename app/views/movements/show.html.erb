@@ -1,1 +1,47 @@
+<% provide(:title, @movement.name) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 movement_header">
+      <div class='row'>
+        <div class="col-md-6">
+      <h3 class="movement_title"> <%= @movement.name %> <br> <%= pluralize(@movement.active_relationships.count+1, 'member') %> </h3>
 
+        <p> <%= @movement.desc %> </p>
+        </div>
+
+
+        <div class="col-md-4">
+          <% unless current_user.nil? %>
+            <% unless current_user?(@movement.user) %>
+                <div id="follow_form">
+                  <% if current_user.member?(@movement) %>
+                      <%= form_for(current_user.active_relationships.find_by(movement_id: @movement.id),
+                                   html: { method: :delete }) do |f| %>
+                          <%= f.submit "Leave", class: "btn" %>
+                      <% end %>
+                  <% else if logged_in? %>
+                          <%= form_for(current_user.active_relationships.build) do |f| %>
+                          <div><%= hidden_field_tag :movement_id, @movement.id %></div>
+                          <%= f.submit "Join", class: "btn btn-primary" %>
+                      <% end %>
+                  <% end %>
+                  <% end %>
+                </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 movement_members">
+      <ul>
+      <%@movement.active_relationships.each do |relation| %>
+        <li>
+          <% user = User.find(relation.member_id) %>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

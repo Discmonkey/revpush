@@ -36,6 +36,7 @@ class MovementsController < ApplicationController
   end
 
   def show
+    @movement = Movement.find(params[:id])
   end
 
   def destroy
@@ -43,6 +44,6 @@ class MovementsController < ApplicationController
 
   private
     def movement_params
-      params.require(:movement).permit(:name, :desc, :zoom, :center_lat, :center_long, :movement_color, :movement_strength, :Address)
+      params.require(:movement).permit(:name, :desc, :zoom, :center_lat, :center_long, :movement_color, :movement_strength, :Address,:id)
     end
 end
