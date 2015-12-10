@@ -1,6 +1,3 @@
-# Ruby on Rails Tutorial: sample application
+This is the source code for a project titled revolutions, which allows users to create movements in an interactive matter
 
-This is the sample application for the
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/)
+by Max Grinchenko
