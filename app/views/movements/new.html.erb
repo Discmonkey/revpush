@@ -55,6 +55,7 @@
       editable: true
     });
 
+
     google.maps.event.addListener(circle, 'radius_changed', function () {
       document.getElementById('movement_zoom').value = String(circle.getRadius());
       var new_opac = 750/circle.getRadius();
@@ -72,6 +73,6 @@
 
     });
   }
-      initMap()
+  initMap()
 </script>
 
