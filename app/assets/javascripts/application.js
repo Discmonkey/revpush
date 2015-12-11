@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require turbolinks
 //= require underscore
+//= require maps
 //= require_tree .
 
