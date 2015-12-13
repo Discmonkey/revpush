@@ -10,8 +10,6 @@
 
           </p>
         </h1>
-
-
         <div id="user_movements">
           <% if @user.movements.any? %>
               <h2>Started (<%= @user.movements.count %>) Movements</h2>
@@ -75,15 +73,11 @@
 
     bounds.union(c_<%=movement.id%>.getBounds());
 
-
-
-    var contentString<%=movement.id%> = '<h2> <%=movement.name%></h2>' + '<p><%=movement.desc%> <p>' +'<%= link_to "see movement", movement %>';
-
+    var contentString<%=movement.id%> = '<h2><%=movement.name%></h2>'+'<p><%=movement.desc.gsub(/\r\n/,'<br>')%> </p>'+'<%=link_to "see movement", movement%>';
 
     var infowindow<%=movement.id%> = new google.maps.InfoWindow({
       content: contentString<%=movement.id%>
     });
-
 
     c_<%=movement.id%>.addListener('click', function() {
       console.log("hey i got clicked")
@@ -94,7 +88,6 @@
     <% end %>
 
     map.fitBounds(bounds);
-    console.log(bounds);
   }
 
   initMap()

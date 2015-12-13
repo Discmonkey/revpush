@@ -55,8 +55,8 @@
       editable: true
     });
 
-
     google.maps.event.addListener(circle, 'radius_changed', function () {
+      console.log(circle.getRadius())
       document.getElementById('movement_zoom').value = String(circle.getRadius());
       var new_opac = 750/circle.getRadius();
       if (new_opac > .9) {
@@ -67,10 +67,8 @@
     });
 
     google.maps.event.addListener(circle, 'center_changed', function () {
-      console.log(circle.getCenter()['G'])
-      document.getElementById('movement_center_lat').value = String(circle.getCenter()['G']);
-      document.getElementById('movement_center_long').value = String(circle.getCenter()['K']);
-
+      document.getElementById('movement_center_lat').value = String(circle.getCenter().lat());
+      document.getElementById('movement_center_long').value = String(circle.getCenter().lng());
     });
   }
   initMap()

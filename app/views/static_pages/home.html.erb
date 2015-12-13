@@ -36,9 +36,6 @@
 
       </div>
 
-
-
-
       <script type="text/javascript">
         function initMap() {
           // Create the map.
@@ -71,7 +68,7 @@
 
 
 
-          var contentString<%=movement.id%> = '<h2> <%=movement.name%></h2>' + '<p><%=movement.desc%> <p>' +'<%= link_to "see movement", movement %>';
+          var contentString<%=movement.id%> = '<h2> <%=movement.name%></h2>'+'<p><%=movement.desc.gsub(/\r\n/,'<br>')%> </p>' +'<%= link_to "see movement", movement %>';
 
 
           var infowindow<%=movement.id%> = new google.maps.InfoWindow({
@@ -80,16 +77,13 @@
 
 
           c_<%=movement.id%>.addListener('click', function() {
-            console.log("hey i got clicked")
-            console.log(c_<%=movement.id%>.latLng)
             infowindow<%=movement.id%>.open(map,c_<%=movement.id%>.latLng);
           });
 
           <% end %>
 
           map.fitBounds(bounds);
-          console.log(bounds);
           }
 
-          initMap()
+        initMap()
     </script>
